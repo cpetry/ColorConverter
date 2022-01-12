@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+    <head>
+        <title>ColorConverter</title>
+        <script src="./hex.js" ></script>
+        <script src="./rgb.js" ></script>
+        <script src="./Lab.js" ></script>
+        <script src="./RAL.js" ></script>
+        <script>
+            var hex = new HEX();
+            var rgb = new RGB();
+            var lab = new LAB();
+
+            function UpdateHex(){
+                var rgbValue = hex.getRGBValue();
+                UpdateAll(rgbValue);
+            }
+            function UpdateRGB(){
+                var rgbValue = rgb.getRGBValue();
+                rgb.setRGBLinearValue(rgb.toLinear(rgbValue));
+                UpdateAll(rgbValue);
+            }
+            function UpdateRGBLinear(){
+                var rgbLinearValue = rgb.getRGBLinearValue();
+                var rgbValue = rgb.tosRGB(rgbLinearValue);
+                UpdateAll(rgbValue);
+            }
+            function UpdateAll(rgbValue){
+                if (rgbValue != null){
+                    rgb.setRGBValue(rgbValue);
+                    hex.setRGBValue(rgbValue);
+                    lab.setRGBValue(rgbValue);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        
+        <div>Hex
+            <input id="hex" type="text" oninput="UpdateHex()" />
+        </div>
+
+        <div>RGB
+            <input id="red" type="number" oninput="UpdateRGB()"  />
+            <input id="green" type="number"  oninput="UpdateRGB()" />
+            <input id="blue" type="number"  oninput="UpdateRGB()" />
+        </div>
+        <div>RGB(linear)
+            <input id="redLinear" type="number" oninput="UpdateRGBLinear()"  />
+            <input id="greenLinear" type="number"  oninput="UpdateRGBLinear()" />
+            <input id="blueLinear" type="number"  oninput="UpdateRGBLinear()" />
+        </div>
+        
+        <div>Lab
+            <input id="L" type="number" step=".001" />
+            <input id="a" type="number" step=".001" />
+            <input id="b" type="number" step=".001" />
+        </div>
+    </body>
+</html>
