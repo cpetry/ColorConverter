@@ -10,7 +10,7 @@
 <canvas id="colorCanvas" width="200" height="100"></canvas>
 
 ### Hex
-<input id="inputHex" type="text" oninput="UpdateHex(this)" value="#000000" size="7" pattern="^\s+*#?[a-fA-F\d]{6}$" title="(i.e. #1ad, #123456, #ffaa33)" /> 
+<input id="inputHex" type="text" oninput="UpdateHex(this)" value="#000000" size="7" pattern="^\s*#?[a-fA-F\d]{6}$" title="(i.e. #1ad, #123456, #ffaa33)" /> 
 
 ### RGB
 R <input id="inputRed" type="number" oninput="UpdateRGB()" min="0" max="255" size="4"/>
@@ -30,7 +30,7 @@ b <input id="inputB" type="number" step=".001" min="-110" max = "100" size="6" /
 <canvas id="colorCanvasLinear" width="200" height="100"></canvas>
 
 ### Hex
-<input id="inputHexLinear" type="text" oninput="UpdateHexLinear(this)" value="#000000" size="7" pattern="^\s+*#?[a-fA-F\d]{6}$" title="(i.e. #1ad, #123456, #ffaa33)" /> 
+<input id="inputHexLinear" type="text" oninput="UpdateHexLinear(this)" value="#000000" size="7" pattern="^\s*#?[a-fA-F\d]{6}$" title="(i.e. #1ad, #123456, #ffaa33)" /> 
 
 ### RGB
 R <input id="inputRedLinear" type="number" oninput="UpdateRGBLinear()" min="0" max="255" size="4" />
