@@ -4,27 +4,27 @@ class RGB {
     }
 
     getRelement(){
-        return document.getElementById("red");
+        return document.getElementById("inputRed");
     }
 
     getGelement(){
-        return document.getElementById("green");
+        return document.getElementById("inputGreen");
     }
 
     getBelement(){
-        return document.getElementById("blue");
+        return document.getElementById("inputBlue");
     }
 
     getRlinearElement(){
-        return document.getElementById("redLinear");
+        return document.getElementById("inputRedLinear");
     }
 
     getGlinearElement(){
-        return document.getElementById("greenLinear");
+        return document.getElementById("inputGreenLinear");
     }
 
     getBlinearElement(){
-        return document.getElementById("blueLinear");
+        return document.getElementById("inputBlueLinear");
     }
 
     getRGBValue()
@@ -39,7 +39,7 @@ class RGB {
         }
     }
 
-    getRGBLinearValue()
+    getRGBValueLinear()
     {
         var rInput = this.getRlinearElement();
         var gInput = this.getGlinearElement();
@@ -68,7 +68,7 @@ class RGB {
             bInput.value = rgb.b;
     }
 
-    setRGBLinearValue(rgbLinear)
+    setRGBValueLinear(rgbLinear)
     {
         var rLinearInput = this.getRlinearElement();
         var gLinearInput = this.getGlinearElement();
@@ -101,17 +101,17 @@ class RGB {
 
     toLinear(rgb){
         return {
-            r: Math.round(this.toLinearChannel(rgb.r)),
-            g: Math.round(this.toLinearChannel(rgb.g)),
-            b: Math.round(this.toLinearChannel(rgb.b))
+            r: Math.ceil(this.toLinearChannel(rgb.r)),
+            g: Math.ceil(this.toLinearChannel(rgb.g)),
+            b: Math.ceil(this.toLinearChannel(rgb.b))
         }
     }
 
     tosRGB(rgbLinear){
         return {
-            r: Math.round(this.tosRGBChannel(rgbLinear.r)),
-            g: Math.round(this.tosRGBChannel(rgbLinear.g)),
-            b: Math.round(this.tosRGBChannel(rgbLinear.b))
+            r: Math.ceil(this.tosRGBChannel(rgbLinear.r)),
+            g: Math.ceil(this.tosRGBChannel(rgbLinear.g)),
+            b: Math.ceil(this.tosRGBChannel(rgbLinear.b))
         }
     }
 

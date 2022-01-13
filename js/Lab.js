@@ -9,15 +9,27 @@ class LAB
     
 
     getLelement(){
-        return document.getElementById("L");
+        return document.getElementById("inputL");
     }
 
     getAelement(){
-        return document.getElementById("a");
+        return document.getElementById("inputA");
     }
 
     getBelement(){
-        return document.getElementById("b");
+        return document.getElementById("inputB");
+    }
+
+    getLLinearelement(){
+        return document.getElementById("inputLLinear");
+    }
+
+    getALinearelement(){
+        return document.getElementById("inputALinear");
+    }
+
+    getBLinearelement(){
+        return document.getElementById("inputBLinear");
     }
 
     getLabValue()
@@ -50,6 +62,19 @@ class LAB
         var LInput = this.getLelement();
         var aInput = this.getAelement();
         var bInput = this.getBelement();
+
+        LInput.value = parseFloat(labArray[0]).toFixed(2);
+        aInput.value = parseFloat(labArray[1]).toFixed(2);
+        bInput.value = parseFloat(labArray[2]).toFixed(2);
+    }
+
+    setRGBValueLinear(rgb){
+        var rgbArray = [rgb.r, rgb.g, rgb.b];
+        var labArray = this.rgb2lab(rgbArray);
+        
+        var LInput = this.getLLinearelement();
+        var aInput = this.getALinearelement();
+        var bInput = this.getBLinearelement();
 
         LInput.value = parseFloat(labArray[0]).toFixed(2);
         aInput.value = parseFloat(labArray[1]).toFixed(2);

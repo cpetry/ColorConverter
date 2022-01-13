@@ -3,23 +3,50 @@ class HEX {
     }
 
     getHexElement(){
-        return document.getElementById("hex");
+        return document.getElementById("inputHex");
     }
 
-    getRGBValue()
+    getHexElementLinear(){
+        return document.getElementById("inputHexLinear");
+    }
+
+    getRGBValue(hexString)
     {
-        var hexInput = this.getHexElement();
-        var rgb = this.hexToRgb(hexInput.value);
+        if (hexString === undefined)
+            return null;
+
+        var rgb = this.hexToRgb(hexString);
         if (rgb == null)
-            console.log("Error - hexToRgb");
+        {
+            console.log("Error - hexToRgb with " + hexString);
+            return null;
+        }
         return rgb;
+    }
+
+    getHexString(){
+        var hexInput = this.getHexElement();
+        var hexString = hexInput.value;
+        return hexString;
+    }
+
+    getHexStringLinear(){
+        var hexInput = this.getHexElementLinear();
+        var hexString = hexInput.value;
+        return hexString;
     }
 
     setRGBValue(rgb)
     {
-        var hexInput = this.getHexElement();
         var hexString = this.RGBToHex(rgb);
+        var hexInput = this.getHexElement();
         hexInput.value = hexString;
+    }
+
+    setRGBValueLinear(rgbLinear){
+        var hexString = this.RGBToHex(rgbLinear);
+        var hexInputLinear = this.getHexElementLinear();
+        hexInputLinear.value = hexString;
     }
 
     hexToRgb(hexString)
@@ -30,7 +57,7 @@ class HEX {
           return r + r + g + g + b + b;
         });
       
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexString);
         return result ? {
           r: parseInt(result[1], 16),
           g: parseInt(result[2], 16),
