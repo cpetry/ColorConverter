@@ -16,15 +16,16 @@
 }
 
 .begin-leftColumn ~ input,
-.begin-leftColumn ~ canvas  {
+.begin-leftColumn ~ canvas {
     margin-bottom: 1em;
-    float: left;
+    float:left;
     clear:both;
 }
 
 .begin-rightColumn ~ h2,
 .begin-rightColumn ~ h3,
 .begin-rightColumn ~ input,
+.begin-rightColumn ~ canvas,
 .begin-rightColumn ~ p {
     width: 50%;
     margin-top: 0em;
@@ -37,11 +38,13 @@
 .end-leftColumn ~ h2,
 .end-leftColumn ~ h3,
 .end-leftColumn ~ input,
+.end-leftColumn ~ canvas,
 .end-leftColumn ~ p,
 .end-rightColumn,
 .end-rightColumn ~ h2,
 .end-rightColumn ~ h3,
 .end-rightColumn ~ input,
+.end-rightColumn ~ canvas,
 .end-rightColumn ~ p {
     width: auto;
     float: none;
