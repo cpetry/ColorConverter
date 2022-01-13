@@ -15,7 +15,8 @@
     clear:both;
 }
 
-.begin-leftColumn ~ input {
+.begin-leftColumn ~ input,
+.begin-leftColumn ~ canvas  {
     margin-bottom: 1em;
     float: left;
     clear:both;
