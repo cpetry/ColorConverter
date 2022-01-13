@@ -1,0 +1,27 @@
+.begin-twoColumns ~ h1,
+.begin-twoColumns ~ h1 + p {
+    width: 100%;
+    clear: both;
+}
+
+.leftColumn,
+.rightColumn {
+    width: 50%;
+}
+
+.leftColumn {
+    float: left;
+    box-sizing: border-box;
+    padding-right: 1rem;
+    clear: both;
+}
+
+.rightColumn {
+    float: right;
+    clear: right;
+    margin-bottom: 1rem;
+}
+
+.end-twoColumns {
+    clear: both;
+}
