@@ -1,26 +1,52 @@
-.begin-twoColumns ~ h1,
-.begin-twoColumns ~ h1 + p {
+.begin-twoColumns ~ h1 {
     width: 100%;
     clear: both;
 }
 
-.leftColumn,
-.rightColumn {
+.begin-leftColumn,
+.begin-leftColumn ~ h2,
+.begin-leftColumn ~ h3,
+.begin-leftColumn ~ p {
     width: 50%;
-}
-
-.leftColumn {
     float: left;
+    margin-top: 0em;
     box-sizing: border-box;
     padding-right: 1rem;
-    clear: both;
+    clear:both;
 }
 
-.rightColumn {
+.begin-leftColumn ~ input {
+    margin-bottom: 1em;
+    float: left;
+    clear:both;
+}
+
+.begin-rightColumn ~ h2,
+.begin-rightColumn ~ h3,
+.begin-rightColumn ~ input,
+.begin-rightColumn ~ p {
+    width: 50%;
+    margin-top: 0em;
     float: right;
     clear: right;
     margin-bottom: 1rem;
 }
+
+.end-leftColumn,
+.end-leftColumn ~ h2,
+.end-leftColumn ~ h3,
+.end-leftColumn ~ input,
+.end-leftColumn ~ p,
+.end-rightColumn,
+.end-rightColumn ~ h2,
+.end-rightColumn ~ h3,
+.end-rightColumn ~ input,
+.end-rightColumn ~ p {
+    width: auto;
+    float: none;
+    clear: none;
+}
+
 
 .end-twoColumns {
     clear: both;

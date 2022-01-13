@@ -3,10 +3,10 @@
 # Color
 <link rel="stylesheet" href="styles.css">
 <div class="begin-twoColumns"></div>
-<div class="leftColumn">
+
+<div class="begin-leftColumn"></div>
 
 ## sRGB
-
 <canvas id="colorCanvas" width="200" height="100"></canvas>
 
 ### Hex
@@ -21,13 +21,12 @@ B <input id="inputBlue" type="number"  oninput="UpdateRGB()" min="0" max="255" s
 L <input id="inputL" type="number" step=".001" min="0" max="100" size="6"/>
 a <input id="inputA" type="number" step=".001" min="-90" max = "100" size="6" />
 b <input id="inputB" type="number" step=".001" min="-110" max = "100" size="6" />
-</div>
 
+<div class="end-leftColumn"></div>
 
-<div class="rightColumn">
+<div class="begin-rightColumn"></div>
 
-## Linear 
-
+## Linear
 <canvas id="colorCanvasLinear" width="200" height="100"></canvas>
 
 ### Hex
@@ -42,7 +41,8 @@ B <input id="inputBlueLinear" type="number"  oninput="UpdateRGBLinear()" min="0"
 L <input id="inputLLinear" type="number" step=".001" min="0" max="100" size="6" />
 a <input id="inputALinear" type="number" step=".001" min="-90" max = "100" size="6" />
 b <input id="inputBLinear" type="number" step=".001" min="-110" max = "100" size="6" />
-<div>
+
+<div class="end-rightColumn"></div>
 <div class="end-twoColumns"></div>
 
 <script src="js/hex.js" type="text/javascript"></script>
