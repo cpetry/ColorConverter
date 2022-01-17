@@ -12,8 +12,10 @@ class HEX {
 
     getRGBValue(hexString)
     {
-        if (hexString === undefined)
+        if (hexString === undefined){
+            console.log("Error - hexToRgb with " + hexString);
             return null;
+        }
 
         var rgb = this.hexToRgb(hexString);
         if (rgb == null)
@@ -53,7 +55,7 @@ class HEX {
     {
         // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
         var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-        hexString = hexString.replace(shorthandRegex, function(m, r, g, b) {
+        hexString = hexString.toLowerCase().replace(shorthandRegex, function(m, r, g, b) {
           return r + r + g + g + b + b;
         });
       
