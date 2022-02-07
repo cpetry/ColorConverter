@@ -15,6 +15,18 @@ class RGB {
         return document.getElementById("inputBlue");
     }
 
+    getRFloatelement(){
+        return document.getElementById("inputRedfloat");
+    }
+
+    getGFloatelement(){
+        return document.getElementById("inputGreenfloat");
+    }
+
+    getBFloatelement(){
+        return document.getElementById("inputBluefloat");
+    }
+
     getRlinearElement(){
         return document.getElementById("inputRedLinear");
     }
@@ -25,6 +37,18 @@ class RGB {
 
     getBlinearElement(){
         return document.getElementById("inputBlueLinear");
+    }
+
+    getRlinearFloatElement(){
+        return document.getElementById("inputRedLinearfloat");
+    }
+
+    getGlinearFloatElement(){
+        return document.getElementById("inputGreenLinearfloat");
+    }
+
+    getBlinearFloatElement(){
+        return document.getElementById("inputBlueLinearfloat");
     }
 
     getRGBValue()
@@ -39,6 +63,18 @@ class RGB {
         }
     }
 
+    getRGBFloatValue()
+    {
+        var rInput = this.getRFloatelement();
+        var gInput = this.getGFloatelement();
+        var bInput = this.getBFloatelement();
+        return {
+            r: parseFloat(rInput.value),
+            g: parseFloat(gInput.value),
+            b: parseFloat(bInput.value)
+        }
+    }
+
     getRGBValueLinear()
     {
         var rInput = this.getRlinearElement();
@@ -47,6 +83,21 @@ class RGB {
         var rLinear = parseInt(rInput.value);
         var gLinear = parseInt(gInput.value);
         var bLinear = parseInt(bInput.value);
+        return {
+            r: rLinear,
+            g: gLinear,
+            b: bLinear
+        }
+    }
+
+    getRGBFloatValueLinear()
+    {
+        var rInput = this.getRlinearFloatElement();
+        var gInput = this.getGlinearFloatElement();
+        var bInput = this.getBlinearFloatElement();
+        var rLinear = parseFloat(rInput.value);
+        var gLinear = parseFloat(gInput.value);
+        var bLinear = parseFloat(bInput.value);
         return {
             r: rLinear,
             g: gLinear,
@@ -68,11 +119,39 @@ class RGB {
             bInput.value = rgb.b;
     }
 
+    setRGBFloatValue(rgb)
+    {
+        var rInput = this.getRFloatelement();
+        var gInput = this.getGFloatelement();
+        var bInput = this.getBFloatelement();
+
+        if (rgb.r != rInput.value)
+            rInput.value = rgb.r;
+        if (rgb.g != gInput.value)
+            gInput.value = rgb.g;
+        if (rgb.b != bInput.value)
+            bInput.value = rgb.b;
+    }
+
     setRGBValueLinear(rgbLinear)
     {
         var rLinearInput = this.getRlinearElement();
         var gLinearInput = this.getGlinearElement();
         var bLinearInput = this.getBlinearElement();
+        
+        if (rgbLinear.r != rLinearInput.value)
+            rLinearInput.value = rgbLinear.r;
+        if (rgbLinear.g != gLinearInput.value)
+            gLinearInput.value = rgbLinear.g;
+        if (rgbLinear.b != bLinearInput.value)
+            bLinearInput.value = rgbLinear.b;
+    }
+
+    setRGBFloatValueLinear(rgbLinear)
+    {
+        var rLinearInput = this.getRlinearFloatElement();
+        var gLinearInput = this.getGlinearFloatElement();
+        var bLinearInput = this.getBlinearFloatElement();
         
         if (rgbLinear.r != rLinearInput.value)
             rLinearInput.value = rgbLinear.r;
@@ -101,17 +180,17 @@ class RGB {
 
     toLinear(rgb){
         return {
-            r: Math.ceil(this.toLinearChannel(rgb.r)),
-            g: Math.ceil(this.toLinearChannel(rgb.g)),
-            b: Math.ceil(this.toLinearChannel(rgb.b))
+            r: this.toLinearChannel(rgb.r),
+            g: this.toLinearChannel(rgb.g),
+            b: this.toLinearChannel(rgb.b)
         }
     }
 
     tosRGB(rgbLinear){
         return {
-            r: Math.ceil(this.tosRGBChannel(rgbLinear.r)),
-            g: Math.ceil(this.tosRGBChannel(rgbLinear.g)),
-            b: Math.ceil(this.tosRGBChannel(rgbLinear.b))
+            r: this.tosRGBChannel(rgbLinear.r),
+            g: this.tosRGBChannel(rgbLinear.g),
+            b: this.tosRGBChannel(rgbLinear.b)
         }
     }
 
@@ -122,14 +201,40 @@ class RGB {
             linear = v / 12.92;
         else 
             linear = Math.pow((v + 0.055) / 1.055, 2.4);
-        return linear * 255;
+        return Math.ceil(linear * 255);
     }
 
     tosRGBChannel(v){
-        v = v / 255;
+        v = this.byteToFloat(v);
         var s;
         if (v <= 0.0031308) s = v * 12.92;
         else s = 1.055 * Math.pow(v, 1.0/2.4) - 0.055;
-        return s * 255;
+        return this.floatToByte(s);
+    }
+
+    floatToByteColor(rgb){
+        return {
+            r: this.floatToByte(rgb.r),
+            g: this.floatToByte(rgb.g),
+            b: this.floatToByte(rgb.b)
+        };
+    }
+
+    byteToFloatColor(rgb){
+        return {
+            r: this.byteToFloat(rgb.r),
+            g: this.byteToFloat(rgb.g),
+            b: this.byteToFloat(rgb.b)
+        };
+    }
+
+    floatToByte(v){
+        v = Math.ceil(v * 255);
+        return v;
+    }
+
+    byteToFloat(v){
+        v = v / 255;
+        return v;
     }
   }

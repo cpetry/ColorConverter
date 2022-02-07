@@ -19,6 +19,11 @@
 R <input id="inputRed" type="number" oninput="UpdateRGB()" min="0" max="255" size="4"/>
 G <input id="inputGreen" type="number" oninput="UpdateRGB()" min="0" max="255" size="4"/>
 B <input id="inputBlue" type="number"  oninput="UpdateRGB()" min="0" max="255" size="4"/>
+
+### RGB(float)
+R <input id="inputRedfloat" type="number" oninput="UpdateRGBFloat(this)" min="0" step=".01"  max="1" size="4"/>
+G <input id="inputGreenfloat" type="number" oninput="UpdateRGBFloat(this)" min="0" step=".01" max="1" size="4"/>
+B <input id="inputBluefloat" type="number"  oninput="UpdateRGBFloat(this)" min="0" step=".01" max="1" size="4"/>
       
 ### Lab
 L <input id="inputL" type="number" step=".001" min="0" max="100" size="6"/>
@@ -42,6 +47,11 @@ b <input id="inputB" type="number" step=".001" min="-110" max = "100" size="6" /
 R <input id="inputRedLinear" type="number" oninput="UpdateRGBLinear()" min="0" max="255" size="4" />
 G <input id="inputGreenLinear" type="number"  oninput="UpdateRGBLinear()" min="0" max="255" size="4"/>
 B <input id="inputBlueLinear" type="number"  oninput="UpdateRGBLinear()" min="0" max="255" size="4" />
+
+### RGB(float)
+R <input id="inputRedLinearfloat" type="number" oninput="UpdateRGBFloatLinear(this)" min="0" max="1" step=".01" size="4" />
+G <input id="inputGreenLinearfloat" type="number"  oninput="UpdateRGBFloatLinear(this)" min="0" max="1" step=".01" size="4"/>
+B <input id="inputBlueLinearfloat" type="number"  oninput="UpdateRGBFloatLinear(this)" min="0" max="1" step=".01" size="4" />
     
 ### Lab
 L <input id="inputLLinear" type="number" step=".001" min="0" max="100" size="6" />

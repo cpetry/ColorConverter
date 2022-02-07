@@ -22,7 +22,6 @@ function UpdateHexLinear(element){
 }
 
 function UpdateRAL(element){
-    console.log("New RAL:" + element.value)
     var isValid = element.reportValidity();
     if (!isValid || ignoreRALUpdate)
         return;
@@ -48,13 +47,37 @@ function UpdateRGB(){
     var rgbValue = rgb.getRGBValue();
     UpdateAllsRGB(rgbValue);
 }
+
+function UpdateRGBFloat(element){
+    var isValid = element.reportValidity();
+    if (!isValid)
+        return;
+    var rgbFloatValue = rgb.getRGBFloatValue();
+    var rgbValue = rgb.floatToByteColor(rgbFloatValue);
+    UpdateAllsRGB(rgbValue);
+    rgb.setRGBFloatValue(rgbFloatValue);
+}
+
 function UpdateRGBLinear(){
     var rgbLinear = rgb.getRGBValueLinear();
     UpdateAllLinear(rgbLinear);
 }
+
+function UpdateRGBFloatLinear(element){
+    var isValid = element.reportValidity();
+    if (!isValid)
+        return;
+    var rgbFloatValueLinear = rgb.getRGBFloatValueLinear();
+    var rgbValueLinear = rgb.floatToByteColor(rgbFloatValueLinear);
+    UpdateAllLinear(rgbValueLinear);
+    rgb.setRGBFloatValueLinear(rgbFloatValueLinear);
+}
+
 function UpdateAllsRGB(rgbValue, ignoreRAL = false){
     if (rgbValue != null){
         rgb.setRGBValue(rgbValue);
+        var rgbFloatValue = rgb.byteToFloatColor(rgbValue);
+        rgb.setRGBFloatValue(rgbFloatValue);
         hex.setRGBValue(rgbValue);
         lab.setRGBValue(rgbValue);
         if (!ignoreRAL){
@@ -65,6 +88,8 @@ function UpdateAllsRGB(rgbValue, ignoreRAL = false){
         UpdateCanvas();
 
         var rgbValueLinear = rgb.tosRGB(rgbValue);
+        var rgbLinearFloatValue = rgb.byteToFloatColor(rgbValueLinear);
+        rgb.setRGBFloatValueLinear(rgbLinearFloatValue);
         rgb.setRGBValueLinear(rgbValueLinear);
         hex.setRGBValueLinear(rgbValueLinear);
         lab.setRGBValueLinear(rgbValueLinear);
@@ -78,12 +103,16 @@ function UpdateAllsRGB(rgbValue, ignoreRAL = false){
 }
 function UpdateAllLinear(rgbValueLinear){
     if (rgbValueLinear != null){
+        var rgbLinearFloatValue = rgb.byteToFloatColor(rgbValueLinear);
+        rgb.setRGBFloatValueLinear(rgbLinearFloatValue);
         rgb.setRGBValueLinear(rgbValueLinear);
         hex.setRGBValueLinear(rgbValueLinear);
         lab.setRGBValueLinear(rgbValueLinear);
         UpdateCanvasLinear();
 
         var rgbValue = rgb.toLinear(rgbValueLinear);
+        var rgbFloatValue = rgb.byteToFloatColor(rgbValue);
+        rgb.setRGBFloatValue(rgbFloatValue);
         rgb.setRGBValue(rgbValue);
         hex.setRGBValue(rgbValue);
         lab.setRGBValue(rgbValue);

@@ -2069,7 +2069,7 @@ class RAL {
         if (ralString in designDict)
             return designDict[ralString]
         
-        console.log("Invalid RAL value '" + ralString + "'");
+        //console.log("Invalid RAL value '" + ralString + "'");
         return null;
     }
 
@@ -2078,7 +2078,7 @@ class RAL {
         var best = { key: null, value : 100000 }
         this.findBestHexValue(classicDict, hex, hexString, best );
         this.findBestHexValue(designDict,  hex, hexString, best );
-        console.log("Best " + best.key + ":" + best.value);
+        //console.log("Best " + best.key + ":" + best.value);
         return best.key;
     }
 
@@ -2099,7 +2099,7 @@ class RAL {
             if (currentDistance < best.value){
                 best.key = hexValue;
                 best.value = currentDistance;
-                console.log("Best " + best.key + ":" + best.value);
+                //console.log("Best " + best.key + ":" + best.value);
             }
         }
     }
